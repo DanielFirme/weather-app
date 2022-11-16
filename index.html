@@ -4,34 +4,64 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clima</title>
+    <title>Previsão do Tempo</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400;500;600;700&family=Questrial&display=swap" rel="stylesheet"> 
 </head>
 <body>
-    <h1>Clima</h1>
-    <form class="busca">
-        <input type="search" id="searchInput">
-        <button>Buscar</button>
-    </form>
-    <div class="resultado">
-        <div class="titulo">--</div>
-        <div class="info">
-            <div class="temp">
-                <div class="tempTitulo">Temperatura</div>
-                <div class="tempInfo">-- <sup>°C</sup></div>
-                <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="">
+    <header>
+        <h1>Previsão do Tempo</h1>
+        <div class="search--box">
+            <form class="search">
+                <input type="search" id="searchInput" placeholder="Buscar">
+                <button><img src="assets/images/zoom.png"/></button>
+            </form>
+        </div>          
+    </header>
+
+    <main id="result">
+        <div class="city">Aparecida de Goiânia</div>
+        <div class="datetime">
+            <time>10:20</time>
+            <div class="day--date">
+                <div class="weekday">Terça</div>
+                <div class="date">15/11/2022</div>
+            </div>     
+        </div>
+        <div class="weather--info">
+            <div class="weather--image">
+                <img src="http://openweathermap.org/img/wn/10d@2x.png" alt=""/>
+                <div class="weather--image--desc">Ensolarado</div>
             </div>
-            <div class="vento">
-                <div class="ventoTitulo">Vento</div>
-                <div class="ventoInfo">-- <span>km/h</span></div>
-                <div class="ventoArea">
-                    <div class="ventoPonto" style="transform: rotate(0deg);"></div>
+            <div class="temperature">
+                <div class="temp--info">
+                    <div class="current-temp">22º</div>
+                    <div class="variation-temp">
+                        <div class="var-temp">Máx. <span class="max-temp-deg">24</span>º</div>
+                        <div class="var-temp">Min. <span class="min-temp-deg">19</span>º</div>
+                    </div>   
+                </div>
+                
+                <div class="temp-info-details">
+                    <div class="feels-like info-det">Sensação Térmica: <span class="fl-deg">21</span>º</div>
+                    <div class="humidity info-det">Umidade do ar: <span class="hum-deg">50</span>%</div>
+                    <div class="wind info-det">Vento: <span class="wind">10</span>km/h</div>
+                    <div class="dawn info-det">Alvorada: <span class="down-time">05:45</span>h</div>
+                    <div class="twilight info-det">Crepúsculo: <span class="twilight-time">18:50</span>h</div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="aviso"></div>
-    <footer>Criado pela B7Web</footer>
-    <script src="assets/js/script.js"></script>
+        <footer>Desenvolvido por Daniel Firme</footer>
+    </main>
 </body>
 </html>
+
+
