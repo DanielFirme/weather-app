@@ -1,6 +1,6 @@
 //ATALHOS
 const $ = document.querySelector.bind(document);
-$('.busca').addEventListener('submit', async (event)=>{
+$('.search').addEventListener('submit', async (event)=>{
     event.preventDefault();
     const input = $('#searchInput').value;
     if(input !== ''){
@@ -44,7 +44,7 @@ function showInfo(json){
 
 function clearInfo(){
     showWarming('');
-    $('.resultado').style.display = 'none';
+    $('.result').style.display = 'none';
 }
 
 function showWarming(msg){
