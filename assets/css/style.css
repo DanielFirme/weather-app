@@ -9,6 +9,10 @@
 }
 
 body {
+    background-color: #000;
+}
+
+.weather-app {
     background-image: url('../images/day/clear.jpg');
     background-position: left 10%, center 20%;
     background-repeat: no-repeat;
@@ -17,8 +21,8 @@ body {
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
+    opacity: 0;
     transition: opacity 0.5s ease;
-
 }
 
 header {
@@ -51,7 +55,7 @@ h1 {
     display: flex;
     flex-direction: row;
     padding: 5px 5px;
-    background-color: rgba(153, 153, 153, 0.7);
+    /* background-color: rgba(153, 153, 153, 0.7); */
     border: 1px solid #dddddd;
     border-radius: 5px;
 

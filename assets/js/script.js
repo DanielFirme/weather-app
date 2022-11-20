@@ -2,7 +2,7 @@
 const $ = document.querySelector.bind(document);
 
 let input = 'Goiânia';
-const backgroundBody = $('body');
+const backgroundWAPP = $('.weather-app');
 
 $('.search').addEventListener('submit', (event)=>{
     event.preventDefault();
@@ -11,7 +11,7 @@ $('.search').addEventListener('submit', (event)=>{
         $('button .zoom--btn').classList.add('hideIcon');
         $('button .loading--icon').classList.remove('hideIcon');
         showWarming('Carregando...');
-        //backgroundBody.style.opacity = "0";
+        backgroundWAPP.style.opacity = "0";
         searchWeather(input);
     } else {
         clearInfo();
@@ -32,8 +32,11 @@ function showInfo(json){
     const date = new Date();
     const miliseconds = date.getMilliseconds();
     const utcMiliseconds = miliseconds + (date.getTimezoneOffset() * 60000);
+    
     date.setMilliseconds(utcMiliseconds + (json.timezone * 1000));
+    
     let weekDay = new Intl.DateTimeFormat('pt-BR', { weekday: 'long' }).format(date);
+    
     $('.datetime time').innerText = `${("0" + date.getHours()).slice(-2)}:${("0" + date.getMinutes()).slice(-2)}`;
 
     $('.day--date .weekday').innerText = weekDay.charAt(0).toUpperCase() + weekDay.slice(1);
@@ -48,7 +51,7 @@ function showInfo(json){
     $('.wind.info-det .wind').innerText = `${json.wind.speed}`;
     $('.weather--image img').setAttribute('src', `http://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png`);
 
-    setBackgroundImageUrl(json.weather[0].id, json.weather[0].icon.slice(-1))
+    setBackgroundImageUrl(json.weather[0].id, json.weather[0].icon.slice(-1));
 }
 
 function clearInfo(){
@@ -78,6 +81,7 @@ async function searchWeather(input){
     if(json.cod === 200){
         showInfo(json);
     } else {
+        backgroundWAPP.style.opacity = "1";
         showWarming('Cidade não encontrada.');
         setTimeout(()=>{
             showWarming('');
@@ -87,8 +91,7 @@ async function searchWeather(input){
     if($('button .zoom--btn').classList.contains('hideIcon')){
         $('button .zoom--btn').classList.remove('hideIcon');
         $('button .loading--icon').classList.add('hideIcon');
-    }
-    
+    } 
 }
 
 function setBackgroundImageUrl(weatherId, letterIcon){
@@ -96,14 +99,14 @@ function setBackgroundImageUrl(weatherId, letterIcon){
     const timeOfDay = (letterIcon === 'd') ? 'day' : 'night';
 
     if (weatherId == 800) {
-        backgroundBody.style.backgroundImage = `url(assets/images/${timeOfDay}/clear.jpg)`;
+        backgroundWAPP.style.backgroundImage = `url(assets/images/${timeOfDay}/clear.jpg)`;
     } else if (
         weatherId == 801 ||
         weatherId == 802 ||
         weatherId == 803 ||
         weatherId == 804
     ) {
-        backgroundBody.style.backgroundImage = `url(assets/images/${timeOfDay}/cloud.jpg)`;
+        backgroundWAPP.style.backgroundImage = `url(assets/images/${timeOfDay}/cloud.jpg)`;
     } else if (
         weatherId == 200 ||
         weatherId == 201 ||
@@ -136,10 +139,12 @@ function setBackgroundImageUrl(weatherId, letterIcon){
         weatherId == 522 ||
         weatherId == 531
     ) {
-        backgroundBody.style.backgroundImage = `url(assets/images/${timeOfDay}/rain.jpg)`;
+        backgroundWAPP.style.backgroundImage = `url(assets/images/${timeOfDay}/rain.jpg)`;
     } else {
-        backgroundBody.style.backgroundImage = `url(assets/images/${timeOfDay}/snow.jpg)`;
+        backgroundWAPP.style.backgroundImage = `url(assets/images/${timeOfDay}/snow.jpg)`;
     }
+
+    backgroundWAPP.style.opacity = "1";
     
 }
 
