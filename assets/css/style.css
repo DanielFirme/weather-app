@@ -71,6 +71,10 @@ h1 {
     outline: none;
 }
 
+.search input::placeholder {
+    color: #FFF;
+}
+
 button {
     border: none;
     height: 20px;
