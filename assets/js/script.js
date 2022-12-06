@@ -18,7 +18,7 @@ $('.search').addEventListener('submit', (event)=>{
     }
 });
 
-window.addEventListener('mousemove', (event)=>{
+document.addEventListener('mousemove', (event)=>{
     if(event.pageY >= 100){
         $('header').classList.add('hide');
     } else {
@@ -48,7 +48,7 @@ function showInfo(json){
     $('.weather--image--desc').innerText = `${json.weather[0].description}`;
     $('.feels-like.info-det .fl-deg').innerText = `${json.main['feels_like']}`;
     $('.humidity.info-det .hum-deg').innerText = `${json.main.humidity}`;
-    $('.wind.info-det .wind').innerText = `${json.wind.speed}`;
+    $('.wind.info-det .wind').innerText = `${(json.wind.speed * 3.6).toFixed(2)}`;
     $('.weather--image img').setAttribute('src', `http://openweathermap.org/img/wn/${json.weather[0].icon}@2x.png`);
 
     setBackgroundImageUrl(json.weather[0].id, json.weather[0].icon.slice(-1));
